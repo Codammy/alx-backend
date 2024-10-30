@@ -5,7 +5,7 @@ function named index_range that takes two integer arguments page and page_size
 import typing
 
 
-def index_range(page: int, page_size:int)-> typing.Tuple[int, int]:
+def index_range(page: int, page_size: int) -> typing.Tuple[int, int]:
     """
     returns a tuple of size two containing a
     start index and an end index corresponding to the range
