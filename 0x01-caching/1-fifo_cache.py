@@ -11,7 +11,7 @@ class FIFOCache(base_caching.BaseCaching):
     def __init__(self):
         """class initializer"""
         super().__init__()
-    
+
     def put(self, key, item):
         """assign to the dictionary self.cache_data"""
         if key and item:
@@ -25,3 +25,4 @@ class FIFOCache(base_caching.BaseCaching):
         """return the value in self.cache_data linked to key"""
         if key:
             return self.cache_data.get(key, None)
+        
