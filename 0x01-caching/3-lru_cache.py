@@ -13,6 +13,7 @@ class LRUCache(base_caching.BaseCaching):
         super().__init__()
         self.__rank = {}
         self.access_times = 0
+        self.recent_access = None
 
     def put(self, key, item):
         """assign to the dictionary self.cache_data"""
@@ -28,13 +29,14 @@ class LRUCache(base_caching.BaseCaching):
                 self.__rank[key] = self.access_times
 
             self.cache_data[key] = item
+            self.recent_access = key
             self.access_times += 1
 
     def __least_accessed(self):
         """returns the key with the least accessed times."""
-        least_accessed = (None, self.access_times)
+        least_accessed = (self.recent_access, self.access_times)
         for k, t in self.__rank.items():
-            if t <= least_accessed[1]:
+            if t < least_accessed[1]:
                 least_accessed = (k, t)
         self.__rank.pop(least_accessed[0])
         return least_accessed
@@ -45,5 +47,6 @@ class LRUCache(base_caching.BaseCaching):
             item = self.cache_data.get(key, None)
             if item:
                 self.access_times += 1
+                self.recent_access = key
                 self.__rank[key] = self.access_times
             return item
