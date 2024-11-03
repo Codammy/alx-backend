@@ -34,7 +34,7 @@ class LRUCache(base_caching.BaseCaching):
         """returns the key with the least accessed times."""
         least_accessed = (None, self.access_times)
         for k, t in self.__rank.items():
-            if t < least_accessed[1]:
+            if t <= least_accessed[1]:
                 least_accessed = (k, t)
         self.__rank.pop(least_accessed[0])
         return least_accessed
