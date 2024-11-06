@@ -19,5 +19,3 @@ babel = Babel(app, locale_selector=get_locale)
 def index_page() -> typing.Any:
     """renders index page"""
     return render_template('index.html')
-
-app.run()
